@@ -44,15 +44,15 @@ class TwigExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'getBaseFile' => new \Twig_Function_Method($this, 'getBaseFile')
+            new \Twig_SimpleFunction('getBaseFile', [$this, 'getBaseFile'])
         );
     }
 
     public function getFilters()
     {
         return array(
-            'vlabs_filter' => new \Twig_Filter_Method($this, 'filter'),
-            'vlabs_media' => new \Twig_Filter_Method($this, 'displayTemplate')
+            new TwigFilter('vlabs_filter', [$this, 'filter']),
+            new TwigFilter('vlabs_media', [$this, 'displayTemplate'])
         );
     }
 
